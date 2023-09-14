@@ -17,18 +17,18 @@
       <ion-card-title>Solicitação2</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-textarea placeholder="Digite mais informações sobre o problema"></ion-textarea>
+      <ion-textarea placeholder="Digite mais informações sobre o problema" [(ngModel)]="pedido.detalhes"></ion-textarea>
       <ion-button class="botao-foto" expand="full" shape="round">
         <ion-icon name="camera"></ion-icon> Adicionar Foto
       </ion-button>
-      <ion-input placeholder="CEP"></ion-input>
-      <ion-input placeholder="Endereço"></ion-input>
-      <ion-input placeholder="Número do local do problema"></ion-input>
-      <ion-input placeholder="Ponto de Referência"></ion-input>
+      <ion-input placeholder="CEP" [(ngModel)]="pedido.cep"></ion-input>
+      <ion-input placeholder="Endereço" [(ngModel)]="pedido.endereco"></ion-input>
+      <ion-input placeholder="Número do local do problema" [(ngModel)]="pedido.numero"></ion-input>
+      <ion-input placeholder="Ponto de Referência" [(ngModel)]="pedido.pontoReferencia"></ion-input>
       <ion-button class="botao-gps" expand="full" shape="round">
         <ion-icon name="locate"></ion-icon> Obter Endereço
       </ion-button>
-      <ion-button class="botao-enviar" expand="full" shape="round">
+      <ion-button class="botao-enviar" expand="full" shape="round" (click)="enviarSolicitacao()">
         <ion-icon name="send"></ion-icon> Enviar Solicitação
       </ion-button>
     </ion-card-content>

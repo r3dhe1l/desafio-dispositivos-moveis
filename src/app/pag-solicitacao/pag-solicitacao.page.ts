@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Solicitacao } from 'src/model/estruturas';
 
 @Component({
   selector: 'app-pag-solicitacao',
@@ -8,21 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PagSolicitacaoPage {
 
-  tipoServico: string;
-  detalhes: string;
-  cep: number;
-  endereco: string;
-  numero: number;
-  pontoReferencia: string;
-
+  pedido: Solicitacao;
 
   constructor(private route: ActivatedRoute) {
-    this.tipoServico = '';
-    this.route.params.subscribe(params => { this.tipoServico = params['tipoServ'] });
-    this.detalhes = '';
-    this.cep = 0;
-    this.endereco = '';
-    this.numero = 0;
-    this.pontoReferencia = '';
+    this.pedido = new Solicitacao();
+    this.route.params.subscribe(params => { this.pedido.tipoServico = params['tipoServ'] }); //Recuperar a informação de qual serviço foi selecionado
+  }
+
+  enviarSolicitacao() {
+    this.pedido.dataSolicitacao = new Date();
+    console.log('deu certo', this.pedido.protocolo, this.pedido.tipoServico, this.pedido.detalhes, this.pedido.cep, this.pedido.endereco, this.pedido.numero, this.pedido.pontoReferencia, this.pedido.dataSolicitacao);
   }
 }
