@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Solicitacao } from 'src/model/estruturas';
 import { ToastController } from '@ionic/angular';
 import { PhotoService } from '../services/photo.service';
+import { GeolocationService } from '../services/geolocation.service';
 
 @Component({
   selector: 'app-pag-solicitacao',
@@ -13,15 +14,19 @@ export class PagSolicitacaoPage {
 
   pedido: Solicitacao;
 
-  constructor(private route: ActivatedRoute, private router: Router, private toastController: ToastController, public photoService: PhotoService) {
+  constructor(private route: ActivatedRoute, private router: Router, private toastController: ToastController, public photoService: PhotoService, public geoService: GeolocationService) {
     this.pedido = new Solicitacao();
     this.route.params.subscribe(params => {
       this.pedido.tipoServico = params['tipoServ'];
     });
   }
 
-  addPhotoToGallery() {
+  tirarFoto() {
     this.photoService.addNewToGallery();
+  }
+
+  pegarGeolocalizacao() {
+    this.geoService.takeGeolocation();
   }
 
   async enviarSolicitacao() {
