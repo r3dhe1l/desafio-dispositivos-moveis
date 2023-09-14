@@ -1,0 +1,7 @@
+{
+  "name": "desafio-dispositivos-moveis",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
