@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaulthref="/tab1" class="voltar"></ion-back-button>
+    </ion-buttons>
+    <div class="cabecalho">
+      <img src="../../assets/icon/logo-pref.png" alt="Brasão Prefeitura Cachoeirinha" class="logo">
+      <h1 class="titulo">App de Serviços2</h1>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Solicitação2</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-textarea placeholder="Digite mais informações sobre o problema"></ion-textarea>
+      <ion-button class="botao-foto" expand="full" shape="round">
+        <ion-icon name="camera"></ion-icon> Adicionar Foto
+      </ion-button>
+      <ion-input placeholder="CEP"></ion-input>
+      <ion-input placeholder="Endereço"></ion-input>
+      <ion-input placeholder="Número do local do problema"></ion-input>
+      <ion-input placeholder="Ponto de Referência"></ion-input>
+      <ion-button class="botao-gps" expand="full" shape="round">
+        <ion-icon name="locate"></ion-icon> Obter Endereço
+      </ion-button>
+      <ion-button class="botao-enviar" expand="full" shape="round">
+        <ion-icon name="send"></ion-icon> Enviar Solicitação
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

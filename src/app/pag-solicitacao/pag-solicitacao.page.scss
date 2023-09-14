@@ -1,0 +1,72 @@
+ion-toolbar {
+    --background: #2f476a;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 50%;
+    height: auto;
+    max-height: 10vh;
+}
+
+.titulo {
+    font-size: 1.5rem;
+    margin-left: 5px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.voltar {
+    --color: white;
+    --icon-font-size: 30px;
+}
+
+ion-card {
+    font-family: 'Montserrat', sans-serif;
+}
+
+ion-card-header {
+    text-align: center;
+}
+
+ion-card-title {
+    font-size: 24px;
+    border: 1px solid #000;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+ion-textarea {
+    height: 150px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.botao-foto {
+    --background: #2f476a;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    width: 200px;
+}
+
+ion-input {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.botao-enviar{
+    --background: #2f476a;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.botao-gps {
+    --background: #2f476a;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    width: 200px;
+}

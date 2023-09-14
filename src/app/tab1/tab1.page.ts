@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,9 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
+  irPagSolicitacao(tipoServ: string){
+    this.router.navigate(['/pag-solicitacao', tipoServ]);
+  }
 }

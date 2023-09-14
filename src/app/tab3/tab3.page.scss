@@ -1,0 +1,23 @@
+ion-toolbar {
+    --background: #2f476a;
+  }
+  
+  .cabecalho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .logo {
+    max-width: 50%;
+    height: auto;
+    max-height: 10vh;
+  }
+  
+  .titulo {
+    font-size: 1.5rem;
+    margin-left: 5px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+  }
