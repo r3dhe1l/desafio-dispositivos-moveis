@@ -18,7 +18,7 @@
     </ion-card-header>
     <ion-card-content>
       <ion-textarea placeholder="Digite mais informações sobre o problema" [(ngModel)]="pedido.detalhes"></ion-textarea>
-      <ion-button class="botao-foto" expand="full" shape="round">
+      <ion-button class="botao-foto" expand="full" shape="round" (click)="addPhotoToGallery()">
         <ion-icon name="camera"></ion-icon> Adicionar Foto
       </ion-button>
       <ion-input placeholder="CEP" [(ngModel)]="pedido.cep"></ion-input>
