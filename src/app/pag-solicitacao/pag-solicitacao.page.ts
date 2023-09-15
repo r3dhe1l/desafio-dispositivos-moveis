@@ -14,7 +14,13 @@ export class PagSolicitacaoPage {
 
   pedido: Solicitacao;
 
-  constructor(private route: ActivatedRoute, private router: Router, private toastController: ToastController, public photoService: PhotoService, public geoService: GeolocationService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastController: ToastController,
+    public photoService: PhotoService,
+    public geoService: GeolocationService
+  ) {
     this.pedido = new Solicitacao();
     this.route.params.subscribe(params => {
       this.pedido.tipoServico = params['tipoServ'];
