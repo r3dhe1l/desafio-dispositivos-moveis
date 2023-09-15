@@ -27,8 +27,11 @@ export class PagSolicitacaoPage {
     });
   }
 
-  tirarFoto() {
-    this.photoService.addNewToGallery();
+  async tirarFoto() {
+    const fotoUri = await this.photoService.addNewToGallery();
+    
+    // Atribua a foto à instância de Solicitacao
+    this.pedido.foto = fotoUri;
   }
 
   async pegarGeolocalizacao() {
@@ -40,7 +43,7 @@ export class PagSolicitacaoPage {
 
   async enviarSolicitacao() {
     this.pedido.dataSolicitacao = new Date();
-    console.log('deu certo', this.pedido.protocolo, this.pedido.tipoServico, this.pedido.detalhes, this.pedido.cep, this.pedido.logradouro, this.pedido.numero, this.pedido.pontoReferencia, this.pedido.dataSolicitacao);
+    console.log('deu certo', this.pedido.protocolo, this.pedido.tipoServico, this.pedido.detalhes, this.pedido.foto, this.pedido.cep, this.pedido.logradouro, this.pedido.numero, this.pedido.pontoReferencia, this.pedido.dataSolicitacao);
 
     const toast = await this.toastController.create({
       message: 'Solicitação Enviada',
