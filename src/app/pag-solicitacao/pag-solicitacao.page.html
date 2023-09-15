@@ -22,7 +22,7 @@
         <ion-icon name="camera"></ion-icon> Adicionar Foto
       </ion-button>
       <ion-input placeholder="CEP" [(ngModel)]="pedido.cep"></ion-input>
-      <ion-input placeholder="Endereço" [(ngModel)]="pedido.endereco"></ion-input>
+      <ion-input placeholder="Endereço" [(ngModel)]="pedido.logradouro"></ion-input>
       <ion-input placeholder="Número do local do problema" [(ngModel)]="pedido.numero"></ion-input>
       <ion-input placeholder="Ponto de Referência" [(ngModel)]="pedido.pontoReferencia"></ion-input>
       <ion-button class="botao-gps" expand="full" shape="round" (click)="pegarGeolocalizacao()">

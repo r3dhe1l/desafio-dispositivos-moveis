@@ -3,7 +3,7 @@ export class Solicitacao {
     tipoServico: string;
     detalhes: string;
     cep: number | null;
-    endereco: string;
+    logradouro: string;
     numero: number | null;
     pontoReferencia: string;
     dataSolicitacao: Date | null;
@@ -13,7 +13,7 @@ export class Solicitacao {
         this.tipoServico = '';
         this.detalhes = '';
         this.cep = null;
-        this.endereco = '';
+        this.logradouro = '';
         this.numero = null;
         this.pontoReferencia = '';
         this.dataSolicitacao = null;

@@ -25,13 +25,16 @@ export class PagSolicitacaoPage {
     this.photoService.addNewToGallery();
   }
 
-  pegarGeolocalizacao() {
-    this.geoService.takeGeolocation();
+  async pegarGeolocalizacao() {
+    const endereco = await this.geoService.takeGeolocation();
+    this.pedido.cep = endereco[0];
+    this.pedido.logradouro = endereco[1];
+    this.pedido.numero = endereco[2];
   }
 
   async enviarSolicitacao() {
     this.pedido.dataSolicitacao = new Date();
-    console.log('deu certo', this.pedido.protocolo, this.pedido.tipoServico, this.pedido.detalhes, this.pedido.cep, this.pedido.endereco, this.pedido.numero, this.pedido.pontoReferencia, this.pedido.dataSolicitacao);
+    console.log('deu certo', this.pedido.protocolo, this.pedido.tipoServico, this.pedido.detalhes, this.pedido.cep, this.pedido.logradouro, this.pedido.numero, this.pedido.pontoReferencia, this.pedido.dataSolicitacao);
 
     const toast = await this.toastController.create({
       message: 'Solicitação Enviada',
