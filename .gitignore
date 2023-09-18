@@ -61,4 +61,12 @@ testem.log
 Thumbs.db
 /www
 
-/node_modules
+/node_modules/@capacitor/android/capacitor/build
+/node_modules/@capacitor/app/android/build
+/node_modules/@capacitor/camera/android/build
+/node_modules/@capacitor/filesystem/android/build
+/node_modules/@capacitor/geolocation/android/build
+/node_modules/@capacitor/haptics/android/build
+/node_modules/@capacitor/keyboard/android/build
+/node_modules/@capacitor/preferences/android/build
+/node_modules/@capacitor/ios
