@@ -4,7 +4,7 @@ import { Solicitacao } from 'src/model/estruturas';
 import { ToastController } from '@ionic/angular';
 import { PhotoService } from '../services/photo.service';
 import { GeolocationService } from '../services/geolocation.service';
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-pag-solicitacao',
@@ -41,21 +41,57 @@ export class PagSolicitacaoPage {
     this.pedido.numero = endereco[2];
   }
 
-  // async obterProtocolo(): Promise<number> {
-  //   const contador = this.db.object('protocolos');
-  //   return contador.query.ref.transaction(currentValue => {
-  //     return (currentValue || 0) + 1;
-  //   }).then(result => {
-  //     return result.snapshot.val();
-  //   })
-  // }
+  async obterProtocolo(): Promise<number> {
+    const contadorRef = this.database.collection('protocolos').doc('protocolos');
+  
+    try {
+      const snapshot = await contadorRef.get().toPromise();
+  
+      if (snapshot && snapshot.exists) {
+        const data = snapshot.data() as { contProt: number };
+        return data ? data.contProt : 0;
+      } else {
+        console.log('O documento não existe.');
+        return 0;
+      }
+    } catch (error) {
+      console.error('Erro ao obter o valor do contador:', error);
+      throw error;
+    }
+  }
+
+  async incrementarProtocolo(): Promise<void> {
+    const contadorRef = this.database.collection('protocolos').doc('protocolos');
+  
+    try {
+      await this.database.firestore.runTransaction(async (transaction) => {
+        const doc = await transaction.get(contadorRef.ref);
+  
+        if (!doc.exists) {
+          throw new Error('O documento não existe.');
+        }
+  
+        const data = doc.data() as { contProt: number };
+        const novoValor = (data ? data.contProt : 0) + 1;
+  
+        transaction.update(contadorRef.ref, { contProt: novoValor });
+      });
+    } catch (error) {
+      console.error('Erro ao incrementar o valor do contador:', error);
+      throw error;
+    }
+  }
 
   async enviarSolicitacao() {
-    const teste = this.database.collection('protocolos').doc('contProt');
-    const xxx = await teste.get();
-
-
-    console.log(xxx);
+    try {
+      const valor = await this.obterProtocolo();
+      this.pedido.protocolo = valor;
+      console.log('Valor do protocolo:', this.pedido.protocolo);
+      await this.incrementarProtocolo();
+      console.log('Valor do contador incrementado com sucesso.');
+    } catch (error) {
+      console.error(error);
+    }
 
     this.pedido.dataSolicitacao = new Date();
     console.log('deu certo', this.pedido.protocolo, this.pedido.tipoServico, this.pedido.detalhes, this.pedido.foto, this.pedido.cep, this.pedido.logradouro, this.pedido.numero, this.pedido.pontoReferencia, this.pedido.dataSolicitacao);
