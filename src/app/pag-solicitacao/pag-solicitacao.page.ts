@@ -4,8 +4,7 @@ import { Solicitacao } from 'src/model/estruturas';
 import { ToastController } from '@ionic/angular';
 import { PhotoService } from '../services/photo.service';
 import { GeolocationService } from '../services/geolocation.service';
-import { Firestore } from '@angular/fire/firestore';
-import { Storage } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-pag-solicitacao',
@@ -22,7 +21,7 @@ export class PagSolicitacaoPage {
     private toastController: ToastController,
     public photoService: PhotoService,
     public geoService: GeolocationService,
-    
+    private database: AngularFirestore
   ) {
     this.pedido = new Solicitacao();
     this.route.params.subscribe(params => {
@@ -52,6 +51,12 @@ export class PagSolicitacaoPage {
   // }
 
   async enviarSolicitacao() {
+    const teste = this.database.collection('protocolos').doc('contProt');
+    const xxx = await teste.get();
+
+
+    console.log(xxx);
+
     this.pedido.dataSolicitacao = new Date();
     console.log('deu certo', this.pedido.protocolo, this.pedido.tipoServico, this.pedido.detalhes, this.pedido.foto, this.pedido.cep, this.pedido.logradouro, this.pedido.numero, this.pedido.pontoReferencia, this.pedido.dataSolicitacao);
 
