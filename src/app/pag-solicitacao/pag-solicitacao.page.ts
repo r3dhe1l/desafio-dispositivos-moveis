@@ -4,6 +4,8 @@ import { Solicitacao } from 'src/model/estruturas';
 import { ToastController } from '@ionic/angular';
 import { PhotoService } from '../services/photo.service';
 import { GeolocationService } from '../services/geolocation.service';
+import { Firestore } from '@angular/fire/firestore';
+import { Storage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-pag-solicitacao',
@@ -19,7 +21,8 @@ export class PagSolicitacaoPage {
     private router: Router,
     private toastController: ToastController,
     public photoService: PhotoService,
-    public geoService: GeolocationService
+    public geoService: GeolocationService,
+    
   ) {
     this.pedido = new Solicitacao();
     this.route.params.subscribe(params => {
@@ -29,8 +32,6 @@ export class PagSolicitacaoPage {
 
   async tirarFoto() {
     const fotoUri = await this.photoService.addNewToGallery();
-    
-    // Atribua a foto à instância de Solicitacao
     this.pedido.foto = fotoUri;
   }
 
@@ -40,6 +41,15 @@ export class PagSolicitacaoPage {
     this.pedido.logradouro = endereco[1];
     this.pedido.numero = endereco[2];
   }
+
+  // async obterProtocolo(): Promise<number> {
+  //   const contador = this.db.object('protocolos');
+  //   return contador.query.ref.transaction(currentValue => {
+  //     return (currentValue || 0) + 1;
+  //   }).then(result => {
+  //     return result.snapshot.val();
+  //   })
+  // }
 
   async enviarSolicitacao() {
     this.pedido.dataSolicitacao = new Date();
